@@ -107,12 +107,32 @@
     </div>
   </div>
 
-  <script>
-    function submitBooking(event) {
-      event.preventDefault();
-      alert("Booking request submitted! 🚗\nOur team will contact you shortly.");
-    }
-  </script>
+<script>
+  function submitBooking(event) {
+    event.preventDefault();
+
+    const date = document.querySelector('input[type="date"]').value;
+    const from = document.querySelector('input[placeholder="Pickup Location"]').value;
+    const to = document.querySelector('input[placeholder="Drop Location"]').value;
+    const persons = document.querySelector('input[type="number"]').value;
+    const car = document.querySelector('select').value;
+
+    const message = `New Booking 🚗%0A
+Date: ${date}%0A
+From: ${from}%0A
+To: ${to}%0A
+Persons: ${persons}%0A
+Car Type: ${car}`;
+
+    // ✅ Put your WhatsApp number with country code, no +
+    const phoneNumber = "917995797879";  
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  }
+</script>
+
+
 
 </body>
 </html>
