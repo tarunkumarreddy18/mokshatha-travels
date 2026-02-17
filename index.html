@@ -77,26 +77,33 @@
     <h1>Mokshatha Travels 🚗</h1>
 
     <form onsubmit="submitBooking(event)">
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit Mobile Number" required>
+
       <label>Date:</label>
-      <input type="date" required>
+      <input type="date" id="date" required>
 
       <label>From:</label>
-      <input type="text" placeholder="Pickup Location" required>
+      <input type="text" id="from" placeholder="Pickup Location" required>
 
       <label>To:</label>
-      <input type="text" placeholder="Drop Location" required>
+      <input type="text" id="to" placeholder="Drop Location" required>
 
       <label>No. of Persons:</label>
-      <input type="number" min="1" max="20" required>
+      <input type="number" id="persons" min="1" max="20" required>
 
       <label>Type of Car:</label>
-      <select required>
+      <select id="car" required>
         <option value="">Select Car Type</option>
         <option>Sedan</option>
         <option>SUV</option>
-        <option>Innova / Ertiga</option>
-        <option>Tempo Traveller</option>
-        <option>Luxury Car</option>
+        <option>5 seater</option>
+		<option>7 seater</option>
+		<option>Innova / Ertiga</option>
+
       </select>
 
       <button type="submit">Book Now</button>
@@ -107,32 +114,34 @@
     </div>
   </div>
 
-<script>
-  function submitBooking(event) {
-    event.preventDefault();
+  <script>
+    function submitBooking(event) {
+      event.preventDefault();
 
-    const date = document.querySelector('input[type="date"]').value;
-    const from = document.querySelector('input[placeholder="Pickup Location"]').value;
-    const to = document.querySelector('input[placeholder="Drop Location"]').value;
-    const persons = document.querySelector('input[type="number"]').value;
-    const car = document.querySelector('select').value;
+      const name = document.getElementById("name").value.trim();
+      const customerPhone = document.getElementById("phone").value.trim();
+      const date = document.getElementById("date").value;
+      const from = document.getElementById("from").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const persons = document.getElementById("persons").value;
+      const car = document.getElementById("car").value;
 
-    const message = `New Booking 🚗%0A
-Date: ${date}%0A
-From: ${from}%0A
-To: ${to}%0A
-Persons: ${persons}%0A
+      const message = `New Booking 🚗
+Name: ${name}
+Customer Phone: ${customerPhone}
+Date: ${date}
+From: ${from}
+To: ${to}
+Persons: ${persons}
 Car Type: ${car}`;
 
-    // ✅ Put your WhatsApp number with country code, no +
-    const phoneNumber = "917995797879";  
+      // 📩 Your mobile number with country code (no +)
+      const yourPhoneNumber = "917995797879";
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
-  }
-</script>
-
-
+      const smsUrl = `sms:${yourPhoneNumber}?body=${encodeURIComponent(message)}`;
+      window.location.href = smsUrl;
+    }
+  </script>
 
 </body>
 </html>
