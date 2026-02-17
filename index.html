@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mokshatha Travels – Car Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #1d2671, #c33764);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #c33764;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #c33764;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #a52a55;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Mokshatha Travels 🚗</h1>
+
+    <form onsubmit="submitBooking(event)">
+      <label>Date:</label>
+      <input type="date" required>
+
+      <label>From:</label>
+      <input type="text" placeholder="Pickup Location" required>
+
+      <label>To:</label>
+      <input type="text" placeholder="Drop Location" required>
+
+      <label>No. of Persons:</label>
+      <input type="number" min="1" max="20" required>
+
+      <label>Type of Car:</label>
+      <select required>
+        <option value="">Select Car Type</option>
+        <option>Sedan</option>
+        <option>SUV</option>
+        <option>Innova / Ertiga</option>
+        <option>Tempo Traveller</option>
+        <option>Luxury Car</option>
+      </select>
+
+      <button type="submit">Book Now</button>
+    </form>
+
+    <div class="footer">
+      © 2026 Mokshatha Travels | www.mokshathatravels.com
+    </div>
+  </div>
+
+  <script>
+    function submitBooking(event) {
+      event.preventDefault();
+      alert("Booking request submitted! 🚗\nOur team will contact you shortly.");
+    }
+  </script>
+
+</body>
+</html>
